@@ -1,3 +1,10 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
+@import "_settings.scss";
+@import "~bootstrap/scss/bootstrap";
+
 body {
-  background-color: indianred;
+  background-color: $background-color;
+  color: $main-font-color;
+  font-family: Montserrat, sans-serif;
 }
