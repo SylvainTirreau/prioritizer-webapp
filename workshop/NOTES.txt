@@ -1,0 +1,17 @@
+Nombre de questions au mieux = Nombre d'éléments à trier - 1
+
+Nombre de questions au pire = Nombre d'éléments à trier * (nombre d'éléments à trier - 1) / 2
+
+Exemple pour 50 éléments à trier :
+Au mieux, 49 questions.
+Au pire : 50 * 49 / 2 = 1225 questions (ça complexifie le processus)
+Pour 20 questions, on est quand même sur 190 questions...
+
+Durée du traitement : 5 secondes par question
+
+Exemple pour 50 éléments à trier :
+Au mieux : 4 minutes
+Au pire : 01 heure 07 minutes
+Pour 20 éléments on est à 16 minutes, c'est plus viable. Mais il faut que les éléments soient vraiment difficilement ordonnable autrement...
+
+Il faut donc impérativement noter le nombre de questions et maintenir ce chiffre à jour en fonction des transitivités découvertes pour avoir une idée du processus en faisant une moyenne.
