@@ -1,10 +1,7 @@
 const webpack = require("webpack");
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const devMode = process.env.NODE_ENV !== "production";
-// Todo: reprendre le tuto à la partie des environnements de dev et prod https://www.alsacreations.com/tuto/lire/1754-debuter-avec-webpack.html
-//  * créer un environnement de dev et de prod
-//  * gérer les warnings sur la taille.
+
 let config = {
     entry: './src/index.ts',
     devtool: 'inline-source-map',
@@ -17,12 +14,7 @@ let config = {
             },
             {
                 test: /\.(sa|sc|c)ss$/,
-                use: [
-                    devMode ? "style-loader" : MiniCssExtractPlugin.loader,
-                    "css-loader",
-                    "postcss-loader",
-                    "sass-loader",
-                ]
+                use: [MiniCssExtractPlugin.loader, 'css-loader', "postcss-loader", "sass-loader"],
             }
         ],
     },

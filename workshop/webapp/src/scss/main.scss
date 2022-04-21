@@ -7,4 +7,24 @@ body {
   background-color: $background-color;
   color: $main-font-color;
   font-family: Montserrat, sans-serif;
+
+  .btns-wrapper {
+    position: relative;
+
+    .btn-wrapper {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+
+      &.hidden {
+        display: none !important;
+      }
+
+      .btn1 {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+
 }
