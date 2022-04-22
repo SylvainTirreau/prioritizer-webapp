@@ -8,6 +8,85 @@ body {
   color: $main-font-color;
   font-family: Montserrat, sans-serif;
 
+  .prtz-i18n {
+    display:block;
+
+    &:first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  .hide-screen {
+    display: none;
+  }
+
+  header {
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+    h1 {
+      margin-bottom: 0;
+      color: rgba(255, 255, 255, 0.9);
+
+      small {
+        font-size: 50%;
+      }
+    }
+
+    .language-selector {
+      background-color: $background-incrusted;
+      color: white;
+    }
+  }
+
+  main {
+    padding-top: 2rem;
+
+    .contextual-tip {
+      font-size: 0.75rem;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    #screen-home {
+
+      .site-slogan {
+        text-align: center;
+        padding-bottom: 2rem;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.5);
+
+        &:first-letter {
+          text-transform: uppercase;
+        }
+      }
+
+      button {
+        width: 70%;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+      }
+    }
+
+    #screen-new-list {
+      textarea {
+        background-color: rgba(255, 255, 255, 0.9);
+        color: rgba(0,0,0,0.75);
+        width: 100%;
+        height: 50vh;
+        &:focus {
+          outline: none;
+        }
+
+        &.inactive {
+          background-color: $background-incrusted;
+          color: rgba(255, 255, 255, 0.8);
+        }
+
+      }
+    }
+  }
+
   .btns-wrapper {
     position: relative;
 

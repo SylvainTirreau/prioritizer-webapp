@@ -28,6 +28,9 @@ export class Main {
         this.questionIter = 1;
         this.results = {};
         this.loosers = [];
+    }
+
+    launch = () => {
         this.generateAllPairs();
         this.initQuestions();
     }
@@ -71,8 +74,8 @@ export class Main {
     initQuestions = () => {
         let generateCouples = new Promise((resolve, reject) => {
             this.generateCouples();
-            resolve("Ids generated.");
-            reject("Ids not generated.");
+            resolve("Couples generated.");
+            reject("Couples not generated.");
         })
 
         generateCouples.then(() => {

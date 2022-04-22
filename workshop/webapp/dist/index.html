@@ -8,25 +8,66 @@
 </head>
 <body>
 
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <h1>Prioritizer 0.1</h1>
-            <p>Version de test.</p>
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-8 d-flex align-items-center">
+                <h1>Prioritizer <small>0.1</small></h1>
+            </div>
+            <div class="col-4 d-flex justify-content-end">
+                <select name="language" id="prtz-language" class="language-selector">
+                    <option value="fr">Fr</option>
+                    <option value="en">En</option>
+                </select>
+            </div>
         </div>
     </div>
-</div>
+</header>
+<main>
+    <div id="screen-home" class="container">
+        <div class="row">
+            <div class="col-12 site-slogan">
+                <span id="i18n-site-slogan" class="prtz-i18n"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 d-flex flex-column align-items-center">
+                <button id="btn-create-list" type="button" class="btn btn-primary"><span id="i18n-create-list" class="prtz-i18n"></span></button>
+                <button id="btn-load-list" type="button" class="btn btn-primary" disabled><span id="i18n-open-list" class="prtz-i18n"></span></button>
+                <button id="btn-help" type="button" class="btn btn-primary" disabled><span id="i18n-help" class="prtz-i18n"></span></button>
+            </div>
+        </div>
+    </div>
+    <div id="screen-new-list" class="container hide-screen">
+        <div class="row">
+            <div class="col-12 contextual-tip">
+                <span id="i18n-new-list-tip-1" class="prtz-i18n"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <textarea id="new-list" name="list" class="inactive"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <button id="btn-compute-list" type="button" class="btn btn-primary" disabled><span id="i18n-compute-list" class="prtz-i18n"></span></button>
+            </div>
+        </div>
 
-<div class="container">
-    <div class="row">
-        <div id="prtz-test-combinations" class="col-6 btns-wrapper">
-        </div>
-        <div id="prtz-test-logs" class="col-6">
-            <div id="test-list-sorted"></div>
-            <div id="test-time-left"></div>
+    </div>
+    <div id="screen-compute-list" class="container hide-screen">
+        <div class="row">
+            <div id="prtz-test-combinations" class="col-12 col-lg-6 btns-wrapper">
+            </div>
+            <div id="prtz-test-logs" class="col-lg-6">
+                <div id="test-list-sorted"></div>
+                <div id="test-time-left"></div>
+            </div>
         </div>
     </div>
-</div>
+</main>
+
 
 <script src="bundle.js"></script>
 </body>
