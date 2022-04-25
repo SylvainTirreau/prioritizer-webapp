@@ -73,12 +73,14 @@
     </div>
     <div id="screen-compute-list" class="container hide-screen">
         <div class="row">
-            <div id="prtz-test-combinations" class="col-12 col-md-6 btns-wrapper">
+            <div class="col-md-4 d-none d-md-block">&nbsp;</div>
+            <div class="col-12 col-md-4">
+                <div><span id="i18n-compute-list-tip" class="prtz-i18n"></span></div>
+                <div id="combinations" class="btns-wrapper d-flex flex-column justify-content-center"></div>
+                <div id="time-left"></div>
+                <progress id="progress" max="100" value="70"> 70% </progress>
             </div>
-            <div id="prtz-test-logs" class="col-md-6">
-                <div id="test-list-sorted"></div>
-                <div id="test-time-left"></div>
-            </div>
+            <div class="col-md-4 d-none d-md-block">&nbsp;</div>
         </div>
     </div>
     <div id="screen-modal" class="hide-screen">

@@ -84,7 +84,7 @@ export class Main {
     }
 
     writeButtons = () => {
-        elementsComputeList.testCombinations.innerHTML = "";
+        elementsComputeList.combinations.innerHTML = "";
         if (this.couplesToCompute.length > 0) {
             let i = 1;
             for (let couple of this.couplesToCompute) {
@@ -119,7 +119,7 @@ export class Main {
                 wrapperBtn2.appendChild(btn2);
                 wrapper.appendChild(wrapperBtn1);
                 wrapper.appendChild(wrapperBtn2);
-                elementsComputeList.testCombinations.appendChild(wrapper);
+                elementsComputeList.combinations.appendChild(wrapper);
                 i += 1;
             }
         } else {
@@ -151,7 +151,7 @@ export class Main {
     }
 
     writeTimeLeft = () => {
-        elementsComputeList.testTimeLeft.innerHTML = "<b>Temps restant : </b>" + this.timeleft;
+        elementsComputeList.timeLeft.innerHTML = "<b>Temps restant : </b>" + this.timeleft;
     }
 
     computeChoiceAndLoadNext = (btn: any) => {
@@ -286,10 +286,10 @@ export class Main {
     writeResults = () => {
         let sortedResults = Object.entries(this.results).sort((a, b) => b[1] - a[1]);
         let i = 1;
-        elementsComputeList.testCombinations.innerHTML = "";
+        elementsComputeList.combinations.innerHTML = "";
         for (let element of sortedResults) {
             let p = createParagraph(null, null,null, null, null, i.toString() + " - " + this.list[element[0].toString()]);
-            elementsComputeList.testCombinations.appendChild(p);
+            elementsComputeList.combinations.appendChild(p);
             i += 1;
         }
     }

@@ -98,14 +98,7 @@ body {
   }
 
   .btns-wrapper {
-    position: relative;
-
     .btn-wrapper {
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-
       &.hidden {
         display: none !important;
       }
