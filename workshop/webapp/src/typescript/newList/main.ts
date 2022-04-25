@@ -1,5 +1,4 @@
 import {elements as elementsNewList} from "./dom";
-import {elements as elementsHome} from "../home/dom";
 import {Main as computeList} from "../computeList/main";
 import {showScreen} from "../commons/utils";
 
@@ -32,10 +31,15 @@ export class Main {
         })
         elementsNewList.newList.addEventListener('input', (event) => {
             let lineBreak;
+            let emptyLine = false;
             let value = (<HTMLTextAreaElement>elementsNewList.newList).value;
+            let lines = value.split('\n');
+            for (let item of lines) {
+                if (item == "") emptyLine = true;
+            }
             (value.indexOf('\n') != -1) ? lineBreak = true : lineBreak = false;
 
-            if (lineBreak) {
+            if (lineBreak && !emptyLine) {
                 (<HTMLButtonElement>elementsNewList.btnComputeList).disabled = false;
                 (<HTMLButtonElement>elementsNewList.btnComputeList).addEventListener('click', this.eventListenerComputeBtn);
             } else {
@@ -51,8 +55,10 @@ export class Main {
             let result: { [index: string]: string } = {};
             let i = 1;
             for (let item of listArray) {
-                result[i.toString()] = item;
-                i += 1;
+                if (item != "") {
+                    result[i.toString()] = item;
+                    i += 1;
+                }
             }
             return result;
         } else {

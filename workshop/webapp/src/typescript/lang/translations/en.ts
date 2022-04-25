@@ -7,5 +7,5 @@ export const texts = {
     "new-list-tip-1": "Enter items to prioritize below (one item per line):",
     "confirm": "confirm",
     "cancel": "cancel",
-    "list-opened": "a list is current computing. If you quit now, you will lost this list. Do you want really quit?"
+    "list-opened": "a list is current computing. If you quit now, you will lost this list. Do you really want to quit?"
 }
