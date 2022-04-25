@@ -12,7 +12,7 @@
     <div class="container">
         <div class="row">
             <div class="col-8 d-flex align-items-center">
-                <h1>Prioritizer <small>0.1</small></h1>
+                <h1 id="site-name" data-current="home">Prioritizer <small>0.1</small></h1>
             </div>
             <div class="col-4 d-flex justify-content-end">
                 <select name="language" id="prtz-language" class="language-selector">
@@ -33,38 +33,67 @@
         <div class="row">
             <div class="col-md-4 d-none d-md-block">&nbsp;</div>
             <div class="col-12 col-md-4 d-flex flex-column align-items-center">
-                <button id="btn-create-list" type="button" class="btn btn-primary"><span id="i18n-create-list" class="prtz-i18n"></span></button>
-                <button id="btn-load-list" type="button" class="btn btn-primary" disabled><span id="i18n-open-list" class="prtz-i18n"></span></button>
-                <button id="btn-help" type="button" class="btn btn-primary" disabled><span id="i18n-help" class="prtz-i18n"></span></button>
+                <button id="btn-create-list" type="button" class="btn btn-primary"><span id="i18n-create-list"
+                                                                                         class="prtz-i18n"></span>
+                </button>
+                <button id="btn-load-list" type="button" class="btn btn-primary" disabled><span id="i18n-open-list"
+                                                                                                class="prtz-i18n"></span>
+                </button>
+                <button id="btn-help" type="button" class="btn btn-primary" disabled><span id="i18n-help"
+                                                                                           class="prtz-i18n"></span>
+                </button>
             </div>
             <div class="col-md-4 d-none d-md-block">&nbsp;</div>
         </div>
     </div>
     <div id="screen-new-list" class="container hide-screen">
         <div class="row">
-            <div class="col-12 contextual-tip">
+            <div class="col-md-3 d-none d-md-block">&nbsp;</div>
+            <div class="col-12 col-md-6 contextual-tip">
                 <span id="i18n-new-list-tip-1" class="prtz-i18n"></span>
             </div>
+            <div class="col-md-3 d-none d-md-block">&nbsp;</div>
         </div>
         <div class="row">
-            <div class="col-12">
+            <div class="col-md-3 d-none d-md-block">&nbsp;</div>
+            <div class="col-12 col-md-6">
                 <textarea id="new-list" name="list" class="inactive"></textarea>
             </div>
+            <div class="col-md-3 d-none d-md-block">&nbsp;</div>
         </div>
         <div class="row">
-            <div class="col-12">
-                <button id="btn-compute-list" type="button" class="btn btn-primary" disabled><span id="i18n-compute-list" class="prtz-i18n"></span></button>
+            <div class="col-md-3 d-none d-md-block">&nbsp;</div>
+            <div class="col-12 col-md-6 btn-start-compute-list-wrapper">
+                <button id="btn-compute-list" type="button" class="btn btn-primary" disabled><span
+                        id="i18n-compute-list" class="prtz-i18n"></span></button>
             </div>
+            <div class="col-md-3 d-none d-md-block">&nbsp;</div>
         </div>
 
     </div>
     <div id="screen-compute-list" class="container hide-screen">
         <div class="row">
-            <div id="prtz-test-combinations" class="col-12 col-lg-6 btns-wrapper">
+            <div id="prtz-test-combinations" class="col-12 col-md-6 btns-wrapper">
             </div>
-            <div id="prtz-test-logs" class="col-lg-6">
+            <div id="prtz-test-logs" class="col-md-6">
                 <div id="test-list-sorted"></div>
                 <div id="test-time-left"></div>
+            </div>
+        </div>
+    </div>
+    <div id="screen-modal" class="hide-screen">
+        <div class="modal-container">
+            <div class="inner-wrapper">
+                <div id="modal-text" class="modal-text">
+                </div>
+                <div class="modal-btns">
+                    <button id="modal-btn-ok" type="button" class="btn btn-danger">
+                        <span id="i18n-confirm" class="prtz-i18n"></span>
+                    </button>
+                    <button id="modal-btn-cancel" type="button" class="btn btn-success">
+                        <span id="i18n-cancel" class="prtz-i18n"></span>
+                    </button>
+                </div>
             </div>
         </div>
     </div>

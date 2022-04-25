@@ -4,5 +4,8 @@ export const texts = {
     "site-slogan": "établir des priorités simplement",
     "help": "aide",
     "compute-list": "commencer",
-    "new-list-tip-1": "entrez les éléments à prioriser ci-dessus :<br>(un élément par ligne)"
+    "new-list-tip-1": "entrez les éléments à prioriser ci-dessus (un élément par ligne) :",
+    "confirm": "confirmer",
+    "cancel": "annuler",
+    "list-opened": "une liste est en cours de calcul. Si vous quittez maintenant, vous perdrez cette liste. Perdre la liste ?"
 }

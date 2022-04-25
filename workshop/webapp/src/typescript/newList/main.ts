@@ -1,6 +1,7 @@
-import {elements} from "./dom";
+import {elements as elementsNewList} from "./dom";
 import {elements as elementsHome} from "../home/dom";
 import {Main as computeList} from "../computeList/main";
+import {showScreen} from "../commons/utils";
 
 export class Main {
 
@@ -9,45 +10,45 @@ export class Main {
     }
 
     eventListenerOutsideTextarea = (event: any) => {
-        if (!elements.newList.contains(event.target)) {
+        if (!elementsNewList.newList.contains(event.target)) {
             this.disableTextarea();
         }
     }
 
     disableTextarea = () => {
-        elements.newList.classList.add('inactive');
-        elements.newList.blur();
+        elementsNewList.newList.classList.add('inactive');
+        elementsNewList.newList.blur();
         window.removeEventListener('click', this.eventListenerOutsideTextarea);
     }
 
     eventListenerTextarea = () => {
-        elements.newList.addEventListener('click', (event) => {
-            if (elements.newList.classList.contains('inactive')) {
-                elements.newList.classList.remove('inactive');
+        elementsNewList.newList.addEventListener('click', (event) => {
+            if (elementsNewList.newList.classList.contains('inactive')) {
+                elementsNewList.newList.classList.remove('inactive');
                 window.addEventListener('click', this.eventListenerOutsideTextarea);
             } else {
                 this.disableTextarea();
             }
         })
-        elements.newList.addEventListener('input', (event) => {
+        elementsNewList.newList.addEventListener('input', (event) => {
             let lineBreak;
-            let value = (<HTMLTextAreaElement>elements.newList).value;
+            let value = (<HTMLTextAreaElement>elementsNewList.newList).value;
             (value.indexOf('\n') != -1) ? lineBreak = true : lineBreak = false;
 
             if (lineBreak) {
-                (<HTMLButtonElement>elements.btnComputeList).disabled = false;
-                (<HTMLButtonElement>elements.btnComputeList).addEventListener('click', this.eventListenerComputeBtn);
+                (<HTMLButtonElement>elementsNewList.btnComputeList).disabled = false;
+                (<HTMLButtonElement>elementsNewList.btnComputeList).addEventListener('click', this.eventListenerComputeBtn);
             } else {
-                (<HTMLButtonElement>elements.btnComputeList).disabled = true;
-                (<HTMLButtonElement>elements.btnComputeList).removeEventListener('click', this.eventListenerComputeBtn);
+                (<HTMLButtonElement>elementsNewList.btnComputeList).disabled = true;
+                (<HTMLButtonElement>elementsNewList.btnComputeList).removeEventListener('click', this.eventListenerComputeBtn);
             }
         })
     }
 
     buildList = () => {
-        if ((<HTMLTextAreaElement>elements.newList).value.indexOf('\n') != -1) {
-            let listArray = (<HTMLTextAreaElement>elements.newList).value.split('\n');
-            let result:{ [index: string]: string } = {};
+        if ((<HTMLTextAreaElement>elementsNewList.newList).value.indexOf('\n') != -1) {
+            let listArray = (<HTMLTextAreaElement>elementsNewList.newList).value.split('\n');
+            let result: { [index: string]: string } = {};
             let i = 1;
             for (let item of listArray) {
                 result[i.toString()] = item;
@@ -61,9 +62,8 @@ export class Main {
     }
 
     eventListenerComputeBtn = (event: any) => {
-        elementsHome.screenNewList.classList.add('hide-screen');
-        elementsHome.screenComputeList.classList.remove('hide-screen');
-        let list:{ [index: string]: string };
+        showScreen('compute-list');
+        let list: { [index: string]: string };
 
         let buildList = new Promise((resolve, reject) => {
             list = this.buildList();

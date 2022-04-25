@@ -1,4 +1,4 @@
-import {elements} from "./dom";
+import {elements as elementsComputeList} from "./dom";
 import {createButton, createDiv, createParagraph} from "../commons/dom";
 import {getAllPairs, arrayNotInInArray, toTime, range} from "../commons/utils";
 
@@ -84,7 +84,7 @@ export class Main {
     }
 
     writeButtons = () => {
-        elements.testCombinations.innerHTML = "";
+        elementsComputeList.testCombinations.innerHTML = "";
         if (this.couplesToCompute.length > 0) {
             let i = 1;
             for (let couple of this.couplesToCompute) {
@@ -119,7 +119,7 @@ export class Main {
                 wrapperBtn2.appendChild(btn2);
                 wrapper.appendChild(wrapperBtn1);
                 wrapper.appendChild(wrapperBtn2);
-                elements.testCombinations.appendChild(wrapper);
+                elementsComputeList.testCombinations.appendChild(wrapper);
                 i += 1;
             }
         } else {
@@ -151,7 +151,7 @@ export class Main {
     }
 
     writeTimeLeft = () => {
-        elements.testTimeLeft.innerHTML = "<b>Temps restant : </b>" + this.timeleft;
+        elementsComputeList.testTimeLeft.innerHTML = "<b>Temps restant : </b>" + this.timeleft;
     }
 
     computeChoiceAndLoadNext = (btn: any) => {
@@ -286,10 +286,10 @@ export class Main {
     writeResults = () => {
         let sortedResults = Object.entries(this.results).sort((a, b) => b[1] - a[1]);
         let i = 1;
-        elements.testCombinations.innerHTML = "";
+        elementsComputeList.testCombinations.innerHTML = "";
         for (let element of sortedResults) {
             let p = createParagraph(null, null,null, null, null, i.toString() + " - " + this.list[element[0].toString()]);
-            elements.testCombinations.appendChild(p);
+            elementsComputeList.testCombinations.appendChild(p);
             i += 1;
         }
     }

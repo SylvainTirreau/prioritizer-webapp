@@ -1,4 +1,5 @@
 import {elements} from "./dom";
+import {showScreen} from "../commons/utils";
 
 export class Main {
 
@@ -8,8 +9,7 @@ export class Main {
 
     eventListenerNewList = () => {
         elements.btnCreateList.addEventListener('click', () => {
-            elements.screenHome.classList.add('hide-screen');
-            elements.screenNewList.classList.remove('hide-screen');
+            showScreen('new-list');
         })
     }
 }

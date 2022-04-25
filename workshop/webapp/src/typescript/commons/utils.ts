@@ -1,3 +1,6 @@
+import {elements as elementsHeader} from "../header/dom";
+import {elements as elementsNewList} from "../newList/dom";
+
 export const getAllPairs = (array: string[]) => {
 
     return array.flatMap((x) => {
@@ -30,4 +33,20 @@ export function* range(start: number = 0, end: number = null, step: number = 1) 
     for (let i = start; i < end; i += step) {
         yield i;
     }
+}
+
+export const showScreen = (screen: string) => {
+    let screens = document.querySelectorAll('*[id^="screen-"]');
+    screens.forEach((element) => {
+        if ("screen-" + screen == element.id) {
+            if (element.classList.contains('hide-screen')) element.classList.remove('hide-screen');
+        } else {
+            if (!element.classList.contains('hide-screen')) element.classList.add('hide-screen');
+        }
+    })
+    elementsHeader.siteName.dataset.current = screen;
+}
+
+export const initNewList = () => {
+    (<HTMLTextAreaElement>elementsNewList.newList).value = "";
 }

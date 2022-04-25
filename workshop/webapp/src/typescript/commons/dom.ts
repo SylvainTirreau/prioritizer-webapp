@@ -106,3 +106,36 @@ export const createParagraph = (id: string = null, classes: string[] = null, sty
     }
     return p;
 }
+
+export const createSpan = (id: string = null, classes: string[] = null, styles: string = null, dataset: { [index: string]: string } = null, innerHTML: string = null, innerTxt: string = null, node: HTMLElement = null) => {
+    let span: HTMLSpanElement = document.createElement('span');
+    if (id !== null) {
+        span.id = id
+    }
+    if (classes !== null) {
+        for (let c of classes) {
+            span.classList.add(c);
+        }
+    }
+    if (styles !== null) {
+        span.style.cssText = styles;
+    }
+    if (dataset !== null) {
+        for (let d in dataset) {
+            span.setAttribute('data-' + d, dataset[d]);
+        }
+    }
+    if (innerHTML !== null) {
+        span.innerHTML = innerHTML;
+    }
+    if (innerHTML !== null) {
+        span.innerHTML = innerHTML;
+    }
+    if (innerTxt !== null) {
+        span.innerText = innerTxt;
+    }
+    if (node !== null) {
+        span.appendChild(node);
+    }
+    return span;
+}
