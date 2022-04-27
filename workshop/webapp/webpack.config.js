@@ -3,7 +3,7 @@ const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 let config = {
-    entry: './src/index.ts',
+    entry: './src/main.ts',
     devtool: 'inline-source-map',
     module: {
         rules: [

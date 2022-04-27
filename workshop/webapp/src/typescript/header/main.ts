@@ -1,6 +1,6 @@
 import {elements as headerElements} from "./dom";
 import {loadTexts, setPageLanguage} from "../lang/main";
-import {showScreen, initNewList} from "../commons/utils";
+import {showScreen} from "../commons/utils";
 import {Main as Modal} from "../modal/main";
 
 export class Main {
@@ -22,11 +22,9 @@ export class Main {
             if (event.target instanceof HTMLHeadingElement) {
                 if (event.target.dataset.current == "compute-list") {
                     this.askConfirmation(this).then(() => {
-                        initNewList();
                         (this.validationResult) ? showScreen('home') : showScreen('compute-list');
                     });
                 } else if (event.target.dataset.current == "new-list") {
-                    initNewList();
                     showScreen('home');
                 } else {
                     showScreen('home');

@@ -5,6 +5,7 @@ import {showScreen} from "../commons/utils";
 export class Main {
 
     constructor() {
+        (<HTMLTextAreaElement>elementsNewList.newList).value = "";
         this.eventListenerTextarea();
     }
 
@@ -17,13 +18,15 @@ export class Main {
     disableTextarea = () => {
         elementsNewList.newList.classList.add('inactive');
         elementsNewList.newList.blur();
+        (<HTMLTextAreaElement>elementsNewList.newList).readOnly = true;
         window.removeEventListener('click', this.eventListenerOutsideTextarea);
     }
 
     eventListenerTextarea = () => {
-        elementsNewList.newList.addEventListener('click', (event) => {
+        elementsNewList.newList.addEventListener('dblclick', (event) => {
             if (elementsNewList.newList.classList.contains('inactive')) {
                 elementsNewList.newList.classList.remove('inactive');
+                (<HTMLTextAreaElement>elementsNewList.newList).readOnly = false;
                 window.addEventListener('click', this.eventListenerOutsideTextarea);
             } else {
                 this.disableTextarea();
@@ -39,13 +42,14 @@ export class Main {
             }
             (value.indexOf('\n') != -1) ? lineBreak = true : lineBreak = false;
 
-            if (lineBreak && !emptyLine) {
+            if (lineBreak && !emptyLine && lines.length >= 3) {
                 (<HTMLButtonElement>elementsNewList.btnComputeList).disabled = false;
                 (<HTMLButtonElement>elementsNewList.btnComputeList).addEventListener('click', this.eventListenerComputeBtn);
             } else {
                 (<HTMLButtonElement>elementsNewList.btnComputeList).disabled = true;
                 (<HTMLButtonElement>elementsNewList.btnComputeList).removeEventListener('click', this.eventListenerComputeBtn);
             }
+
         })
     }
 

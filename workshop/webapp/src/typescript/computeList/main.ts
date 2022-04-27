@@ -1,6 +1,7 @@
 import {elements as elementsComputeList} from "./dom";
-import {createButton, createDiv, createParagraph} from "../commons/dom";
+import {createButton, createDiv, createParagraph, createSpan} from "../commons/dom";
 import {getAllPairs, arrayNotInInArray, toTime, range} from "../commons/utils";
+import {loadTexts} from "../lang/main";
 
 export class Main {
     list: { [index: string]: string };
@@ -15,6 +16,9 @@ export class Main {
     allPairs: string[];
     results: { [index: string]: number };
     loosers: string[];
+    estimatedSeconds: number;
+    startDate: any;
+    firstComputing: boolean;
 
     constructor(list: {}) {
         this.list = list;
@@ -28,6 +32,9 @@ export class Main {
         this.questionIter = 1;
         this.results = {};
         this.loosers = [];
+        this.estimatedSeconds = 0;
+        this.firstComputing = true;
+        elementsComputeList.timeLeft.innerHTML = "";
     }
 
     launch = () => {
@@ -71,6 +78,18 @@ export class Main {
         }
     }
 
+    initProgressBar = () => {
+        (<HTMLProgressElement>elementsComputeList.progressBar).max = this.allPairs.length / 2;
+    }
+
+    setProgressValue = (last: boolean = false) => {
+        if (last) {
+            (<HTMLProgressElement>elementsComputeList.progressBar).value = this.allPairs.length / 2;
+        } else {
+            (<HTMLProgressElement>elementsComputeList.progressBar).value = this.pairsComputed.length / 2;
+        }
+    }
+
     initQuestions = () => {
         let generateCouples = new Promise((resolve, reject) => {
             this.generateCouples();
@@ -78,9 +97,13 @@ export class Main {
             reject("Couples not generated.");
         })
 
-        generateCouples.then(() => {
-            this.writeButtons();
-        })
+        generateCouples
+            .then(() => {
+                this.initProgressBar();
+            })
+            .then(() => {
+                this.writeButtons();
+            })
     }
 
     writeButtons = () => {
@@ -147,11 +170,34 @@ export class Main {
         // Todo: remplacer le includes par indexof : ça ne fonctionne pas sous IE.
         let couplesLeftSize = this.allPairs.filter(n => !this.pairsComputed.includes(n)).length / 2;
         let seconds = couplesLeftSize * 5;
+        if (this.firstComputing) {
+            this.startDate = new Date();
+            this.estimatedSeconds = seconds;
+            this.firstComputing = false;
+        }
         this.timeleft = toTime(seconds);
     }
 
-    writeTimeLeft = () => {
-        elementsComputeList.timeLeft.innerHTML = "<b>Temps restant : </b>" + this.timeleft;
+    writeTimeLeft = (last: boolean = false) => {
+        let writeTimeLeft = new Promise((resolve, reject) => {
+            if (last) {
+                let endDate: any = new Date();
+                let timeDifference = endDate - this.startDate;
+                timeDifference /= 1000
+                elementsComputeList.timeLeft.innerHTML = "<span id='i18n-real-time' class='prtz-i18n' style='font-weight: bold'></span><span> : " + toTime(Math.round(timeDifference)) + "</span><br>";
+                elementsComputeList.timeLeft.innerHTML += "<span id='i18n-estimated-time' class='prtz-i18n' style='font-weight: bold'></span><span> : " + toTime(this.estimatedSeconds) + "</span>";
+            } else {
+                elementsComputeList.timeLeft.innerHTML = "<span id='i18n-time-left' class='prtz-i18n' style='font-weight: bold'></span><span> : " + this.timeleft + "</span>";
+            }
+            resolve("Time left written.");
+            reject("Time left not written.");
+        })
+
+        writeTimeLeft
+            .then(() => {
+                loadTexts();
+            })
+
     }
 
     computeChoiceAndLoadNext = (btn: any) => {
@@ -166,6 +212,16 @@ export class Main {
         recordChoice
             .then(() => {
                 (parseInt(btn.dataset.iter) <= this.couplesToCompute.length - 1) ? this.showNextCouple(btn) : this.computeAndLoadNextStep();
+            })
+            .then(() => {
+                if (parseInt(btn.dataset.iter) <= this.couplesToCompute.length - 1) {
+                    this.applyTransitivity();
+                }
+            })
+            .then(() => {
+                if (parseInt(btn.dataset.iter) <= this.couplesToCompute.length - 1) {
+                    this.setProgressValue();
+                }
             })
             .then(() => {
                 if (parseInt(btn.dataset.iter) <= this.couplesToCompute.length - 1) {
@@ -288,10 +344,14 @@ export class Main {
         let i = 1;
         elementsComputeList.combinations.innerHTML = "";
         for (let element of sortedResults) {
-            let p = createParagraph(null, null,null, null, null, i.toString() + " - " + this.list[element[0].toString()]);
+            let p = createParagraph(null, null, null, null, null, i.toString() + " - " + this.list[element[0].toString()]);
             elementsComputeList.combinations.appendChild(p);
             i += 1;
         }
+        this.setProgressValue(true);
+        this.writeTimeLeft(true);
+        elementsComputeList.computeListTip.classList.add('hide-element');
+        elementsComputeList.computeListResult.classList.remove('hide-element');
     }
 
     comfortLooser = () => {

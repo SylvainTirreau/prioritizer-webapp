@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Prioritizer webapp</title>
+    <title>Sortlists webapp</title>
     <link href="main.css" rel="stylesheet">
 </head>
 <body>
@@ -12,7 +12,7 @@
     <div class="container">
         <div class="row">
             <div class="col-8 d-flex align-items-center">
-                <h1 id="site-name" data-current="home">Prioritizer <small>0.1</small></h1>
+                <h1 id="site-name" data-current="home">Sortlists <small>0.1</small></h1>
             </div>
             <div class="col-4 d-flex justify-content-end">
                 <select name="language" id="prtz-language" class="language-selector">
@@ -46,7 +46,7 @@
             <div class="col-md-4 d-none d-md-block">&nbsp;</div>
         </div>
     </div>
-    <div id="screen-new-list" class="container hide-screen">
+    <div id="screen-new-list" class="container hide-element">
         <div class="row">
             <div class="col-md-3 d-none d-md-block">&nbsp;</div>
             <div class="col-12 col-md-6 contextual-tip">
@@ -57,7 +57,7 @@
         <div class="row">
             <div class="col-md-3 d-none d-md-block">&nbsp;</div>
             <div class="col-12 col-md-6">
-                <textarea id="new-list" name="list" class="inactive"></textarea>
+                <textarea id="new-list" name="list" class="inactive" placeholder="Double click" readonly></textarea>
             </div>
             <div class="col-md-3 d-none d-md-block">&nbsp;</div>
         </div>
@@ -71,19 +71,23 @@
         </div>
 
     </div>
-    <div id="screen-compute-list" class="container hide-screen">
+    <div id="screen-compute-list" class="container hide-element">
         <div class="row">
             <div class="col-md-4 d-none d-md-block">&nbsp;</div>
             <div class="col-12 col-md-4">
-                <div><span id="i18n-compute-list-tip" class="prtz-i18n"></span></div>
+                <div id="compute-list-tip" class="top-tip"><span id="i18n-compute-list-tip" class="prtz-i18n"></span></div>
+                <div id="compute-list-result" class="top-tip hide-element"><span id="i18n-compute-list-result" class="prtz-i18n"></span></div>
                 <div id="combinations" class="btns-wrapper d-flex flex-column justify-content-center"></div>
-                <div id="time-left"></div>
-                <progress id="progress" max="100" value="70"> 70% </progress>
+                <div class="progress-wrapper"><progress id="progress" max="0" value="0"></progress></div>
+                <div class="stats-wrapper">
+                    <div id="time-left"></div>
+                </div>
+
             </div>
             <div class="col-md-4 d-none d-md-block">&nbsp;</div>
         </div>
     </div>
-    <div id="screen-modal" class="hide-screen">
+    <div id="screen-modal" class="hide-element">
         <div class="modal-container">
             <div class="inner-wrapper">
                 <div id="modal-text" class="modal-text">
@@ -100,7 +104,15 @@
         </div>
     </div>
 </main>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 d-flex align-items-center">
 
+            </div>
+        </div>
+    </div>
+</footer>
 
 <script src="bundle.js"></script>
 </body>

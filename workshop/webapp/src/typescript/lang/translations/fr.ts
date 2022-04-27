@@ -8,5 +8,9 @@ export const texts = {
     "confirm": "confirmer",
     "cancel": "annuler",
     "list-opened": "une liste est en cours de calcul. Si vous quittez maintenant, vous perdrez cette liste. Perdre la liste ?",
-    "compute-list-tip": "choisissez l'élément le plus important des deux :"
+    "compute-list-tip": "choisissez l'élément le plus important des deux :",
+    "compute-list-result": "voici votre liste triée :",
+    "real-time": "temps réel",
+    "estimated-time": "temps estimé",
+    "time-left": "temps restant",
 }

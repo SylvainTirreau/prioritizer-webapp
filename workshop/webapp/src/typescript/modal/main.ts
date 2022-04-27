@@ -49,7 +49,7 @@ export class Main {
                     if (this.validationValue == null) {
                         checkResponse();
                     } else {
-                        elementsModal.screenModal.classList.add('hide-screen');
+                        elementsModal.screenModal.classList.add('hide-element');
                         resolve(this.validationValue);
                     }
                 }, 500);

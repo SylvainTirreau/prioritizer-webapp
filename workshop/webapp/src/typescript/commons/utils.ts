@@ -39,14 +39,10 @@ export const showScreen = (screen: string) => {
     let screens = document.querySelectorAll('*[id^="screen-"]');
     screens.forEach((element) => {
         if ("screen-" + screen == element.id) {
-            if (element.classList.contains('hide-screen')) element.classList.remove('hide-screen');
+            if (element.classList.contains('hide-element')) element.classList.remove('hide-element');
         } else {
-            if (!element.classList.contains('hide-screen')) element.classList.add('hide-screen');
+            if (!element.classList.contains('hide-element')) element.classList.add('hide-element');
         }
     })
     elementsHeader.siteName.dataset.current = screen;
-}
-
-export const initNewList = () => {
-    (<HTMLTextAreaElement>elementsNewList.newList).value = "";
 }
