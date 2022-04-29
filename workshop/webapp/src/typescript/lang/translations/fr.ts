@@ -13,4 +13,8 @@ export const texts = {
     "real-time": "temps réel",
     "estimated-time": "temps estimé",
     "time-left": "temps restant",
+    "versions-header": "versions",
+    "versions-txt": "<p><b>version 1.0</b> (mai 2022) : première version ne contenant que la possibilité de calculer une liste de priorités.</p>",
+    "features-header": "fonctionnalités prévues",
+    "features-txt": "<p>Sauvegarder une liste en cours</p><p>Charger une liste sauvegardée.</p>",
 }

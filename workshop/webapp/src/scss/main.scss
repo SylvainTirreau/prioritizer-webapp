@@ -7,6 +7,9 @@ body {
   background-color: $background-color;
   color: $main-font-color;
   font-family: "Montserrat", sans-serif;
+  min-height: 100vh;
+  max-height: 100vh;
+  overflow-y: scroll;
 
   .prtz-i18n {
     display: inline-block;
@@ -27,14 +30,13 @@ body {
   header {
     padding: 0.8rem 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    position: fixed;
+    width: 100%;
+    background-color: $background-hover1-color;
 
     h1 {
       margin-bottom: 0;
       color: rgba(255, 255, 255, 0.9);
-
-      small {
-        font-size: 50%;
-      }
     }
 
     .language-selector {
@@ -47,11 +49,61 @@ body {
     }
   }
 
+  footer {
+    padding: 0.8rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    @include font-size(0.8rem);
+    background-color: $background-hover1-color;
+
+    .left {
+      text-align: center;
+      @include media-breakpoint-up(md) {
+        text-align: left;
+      }
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    .right {
+      text-align: center;
+      @include media-breakpoint-up(md) {
+        text-align: right;
+      }
+
+      a {
+
+        svg {
+          width: 2rem;
+          height: auto;
+          fill: $primary;
+        }
+
+        &:not(:last-of-type) {
+          margin-right: 0.5rem;
+        }
+      }
+
+    }
+
+    #changelog-link {
+      color: $primary;
+      cursor: pointer;
+    }
+  }
+
   main {
-    padding-top: 2rem;
+    padding-top: 5rem;
+    @include media-breakpoint-up(md) {
+      padding-top: 7rem;
+    }
 
     .contextual-tip {
-      font-size: 1.2rem;
+      @include font-size(0.85rem);
       line-height: 1;
       margin-bottom: 1rem;
       color: rgba(255, 255, 255, 0.5);
@@ -98,6 +150,53 @@ body {
 
       .btn-start-compute-list-wrapper {
         text-align: right;
+      }
+    }
+
+    #screen-changelog {
+
+      .changelog-body {
+        background-color: $background-hover1-color;
+        padding: 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        position: relative;
+
+        h2 {
+          margin-top: 2rem;
+          margin-bottom: 1.2rem;
+        }
+
+        #i18n-features-txt {
+          p {
+            padding-left: 2.5rem;
+            position: relative;
+
+            &:before {
+              content: "▣";
+              width: 1rem;
+              position: absolute;
+              left: 1rem;
+              top: 50%;
+              transform: translateY(-50%);
+            }
+          }
+        }
+
+        #changelog-close {
+          width: 1.5rem;
+          position: absolute;
+          top: 1rem;
+          right: 1rem;
+
+          svg {
+            fill: rgba(255,255,255,0.35);
+
+            &:hover {
+              cursor: pointer;
+              fill: white;
+            }
+          }
+        }
       }
     }
   }

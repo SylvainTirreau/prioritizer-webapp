@@ -1,7 +1,9 @@
 import "./scss/main.scss";
 import "../node_modules/promise-polyfill/src/polyfill";
 import {Main as Header} from "./typescript/header/main";
+import {Main as Footer} from "./typescript/footer/main";
 import {Main as Home} from "./typescript/home/main";
+import {Main as Changelog} from "./typescript/changelog/main";
 import {loadTexts, setPageLanguage, localesMapping} from "./typescript/lang/main";
 
 window.addEventListener("DOMContentLoaded", (event) => {
@@ -20,12 +22,16 @@ const navigator: Navigator = window.navigator;
 
 class Main {
     home: any;
+    changelog: any;
     header: any;
+    footer: any;
     userLanguage: any;
 
     constructor() {
         this.header = new Header();
+        this.footer = new Footer();
         this.home = new Home();
+        this.changelog = new Changelog();
         let tmpLanguage = navigator['userLanguage'] || window.navigator.language;
         this.userLanguage = tmpLanguage.split('-')[0];
     }
