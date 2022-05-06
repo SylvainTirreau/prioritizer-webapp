@@ -69,18 +69,20 @@ body {
       text-align: center;
     }
 
-    .ico {
+    .icons {
 
       a {
+        margin-right: 0.5rem;
+      }
+
+      a,
+      div#contact-ico {
+        cursor: pointer;
 
         svg {
           width: 2rem;
           height: auto;
           fill: $primary;
-        }
-
-        &:not(:last-of-type) {
-          margin-right: 0.5rem;
         }
       }
 
@@ -150,18 +152,6 @@ body {
     }
 
     #screen-changelog {
-
-      .changelog-body {
-        background-color: $background-hover1-color;
-        padding: 1rem;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        position: relative;
-
-        h2 {
-          margin-top: 2rem;
-          margin-bottom: 1.2rem;
-        }
-
         #i18n-features-txt {
           p {
             padding-left: 2.5rem;
@@ -177,15 +167,29 @@ body {
             }
           }
         }
+    }
 
-        #changelog-close {
+    .screen-inner {
+      .inner-body {
+        background-color: $background-hover1-color;
+        padding: 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        position: relative;
+
+        h2 {
+          margin-top: 2rem;
+          margin-bottom: 1.2rem;
+        }
+      }
+
+      .inner-close {
           width: 1.5rem;
           position: absolute;
           top: 1rem;
           right: 1rem;
 
           svg {
-            fill: rgba(255,255,255,0.35);
+            fill: rgba(255, 255, 255, 0.35);
 
             &:hover {
               cursor: pointer;
@@ -193,7 +197,6 @@ body {
             }
           }
         }
-      }
     }
   }
 

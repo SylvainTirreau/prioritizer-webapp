@@ -46,3 +46,8 @@ export const showScreen = (screen: string) => {
     })
     elementsHeader.siteName.dataset.current = screen;
 }
+
+export const sendEmail = (token:string) => {
+            let address = atob(token);
+            window.location.href = "mailto:" + address;
+        }

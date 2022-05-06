@@ -4,6 +4,7 @@ import {Main as Header} from "./typescript/header/main";
 import {Main as Footer} from "./typescript/footer/main";
 import {Main as Home} from "./typescript/home/main";
 import {Main as Changelog} from "./typescript/changelog/main";
+import {Main as Contact} from "./typescript/contact/main";
 import {loadTexts, setPageLanguage, localesMapping} from "./typescript/lang/main";
 
 window.addEventListener("DOMContentLoaded", (event) => {
@@ -23,6 +24,7 @@ const navigator: Navigator = window.navigator;
 class Main {
     home: any;
     changelog: any;
+    contact: any;
     header: any;
     footer: any;
     userLanguage: any;
@@ -32,6 +34,7 @@ class Main {
         this.footer = new Footer();
         this.home = new Home();
         this.changelog = new Changelog();
+        this.contact = new Contact();
         let tmpLanguage = navigator['userLanguage'] || window.navigator.language;
         this.userLanguage = tmpLanguage.split('-')[0];
     }

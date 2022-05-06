@@ -17,4 +17,7 @@ export const texts = {
     "versions-txt": "<p><b>version 1.0</b> (may 2022) : first version containing only the possibility of computing a list of priorities.</p>",
     "features-header": "planned features",
     "features-txt": "<p>Save a current list</p><p>Load a saved list.</p>",
+    "contact-mail-title": "Send an e-mail",
+    "contact-mail-txt": "<p>Feel free to send an e-mail to:<ul><li>propose a translation in a language that does not exist;</li><li>propose corrections;</li><li>report a bug (prefer <a href='https://github.com/SylvainTirreau/prioritizer-webapp/issues' target='_blank'>the project's github repository</a> to report a bug);</li><li>propose a feature;</li><li>anything else that comes to mind...</li></ul></p><p>When you click on the button below, a new email will open in you usual email app. Please wait for the window to load...</p>",
+    "send-mail": "Send an e-mail"
 }
